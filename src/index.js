@@ -6,6 +6,8 @@ const BookList = () => {
   return (
     <section className="booklist">
       <Book />
+      <Book />
+      <Book />
     </section>
   );
 };
@@ -28,12 +30,12 @@ const Image = () => (
 );
 const Title = () => <h2>The Let Them Theory</h2>;
 const Author = () => {
-  return (
-    <h4>
-      {" "}
-      Mel Robbins <em>(Author)</em>
-    </h4>
-  );
+  const inlineHeadingStyles = {
+    color: "#617d98",
+    fontSize: "0.75rem",
+    marginTop: "0.5rem",
+  };
+  return <h4 style={inlineHeadingStyles}>Jordan Moore</h4>;
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
