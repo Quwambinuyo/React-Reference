@@ -2,29 +2,54 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "../src/styles/index.css";
 
-const author = "Mel Robbins";
-const title = "The Let Them Theory";
-const image = "https://m.media-amazon.com/images/I/91I1KDnK1kL._SY385_.jpg";
+const firstBook = {
+  author: "Mel Robbins",
+  title: "The Let Them Theory",
+  image: "https://m.media-amazon.com/images/I/91I1KDnK1kL._SY385_.jpg",
+};
+
+const secondBook = {
+  author: "Jonh C CampBell",
+  title: "Ghost Platoon",
+  image: "https://m.media-amazon.com/images/I/41Wts36fLcL._AC_UL320_.jpg",
+};
+
+const thirdBook = {
+  author: "Brenda Davies",
+  title: "The Girl Behind the Gates",
+  image: "https://m.media-amazon.com/images/I/51nAXgu5H+L._SY445_SX342_.jpg",
+};
 
 const BookList = () => {
   return (
     <section className="booklist">
-      <Book author={author} title={title} img={image} />
-      <Book author={author} title={title} img={image} />
-      <Book />
+      <Book
+        author={firstBook.author}
+        title={firstBook.title}
+        image={firstBook.image}
+      />
+      <Book
+        author={secondBook.author}
+        title={secondBook.title}
+        image={secondBook.image}
+      />
+      <Book
+        author={thirdBook.author}
+        title={thirdBook.title}
+        image={thirdBook.image}
+      />
     </section>
   );
 };
 
 const Book = (props) => {
-  console.log(props);
-
+  const { image, title, author } = props;
   return (
     <article className="book">
-      <img src={props.image} alt={props.title} />
+      <img src={image} alt={title} />
 
-      <h2>{props.title}</h2>
-      <h4>{props.author.toUpperCase()}</h4>
+      <h2>{title}</h2>
+      <h4>{author}</h4>
     </article>
   );
 };
