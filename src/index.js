@@ -30,11 +30,8 @@ const BookList = () => {
     <>
       <EventExample />
       <section className="booklist">
-        {/* Iterating through the books array using map() */}
         {books.map((book) => {
           console.log(book); // Logs each book object to the console for debugging
-
-          // Spreading book properties into the Book component and using id as a unique key
           return <Book {...book} key={book.id} />;
         })}
       </section>
@@ -42,33 +39,42 @@ const BookList = () => {
   );
 };
 
-const EventExample = (e) => {
-  const handleFormInput = () => {
+// EventExample component - Handles form events
+const EventExample = () => {
+  const handleFormInput = (e) => {
     console.log("handle form input");
+    console.log("Target:", e.target);
+    console.log("Value:", e.target.value);
   };
-  const handleButtonClick = (e) => {
+
+  const handleButtonClick = () => {
     console.log("handle click");
+  };
+
+  const handleFormSubmission = (e) => {
+    e.preventDefault(); // Prevents page reload
+    console.log("form submitted");
   };
 
   return (
     <section>
-      <form>
-        <h2>typical form</h2>
+      <form onSubmit={handleFormSubmission}>
+        <h2>Typical Form</h2>
         <input
           type="text"
           name="example"
           style={{ margin: "1rem" }}
           onChange={handleFormInput}
         />
+        <button type="submit">Submit Form</button>
       </form>
-      <button onClick={handleButtonClick}>Click me</button>
+      {/* Ensure this button doesn't submit the form */}
     </section>
   );
 };
 
 // Book component - renders individual book details
 const Book = (props) => {
-  // Destructuring props for cleaner code
   const { image, title, author, children } = props;
 
   return (
@@ -76,7 +82,6 @@ const Book = (props) => {
       <img src={image} alt={title} />
       <h2>{title}</h2>
       <h4>{author}</h4>
-      {/* children prop allows additional content to be passed dynamically */}
       {children}
     </article>
   );
