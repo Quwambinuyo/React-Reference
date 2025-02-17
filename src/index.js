@@ -2,44 +2,46 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "../src/styles/index.css";
 
+// Array of book objects with details like author, title, image URL, and unique ID
 const books = [
   {
-    author: "Mel Robbins",
-    title: "The Let Them Theory",
-    image: "https://m.media-amazon.com/images/I/91I1KDnK1kL._SY385_.jpg",
+    author: "Lisa Wingate",
+    title: "Before We Were Yours",
+    image: "https://m.media-amazon.com/images/I/81PO2ZUxnTL._AC_UL320_.jpg",
+    id: 1,
   },
-
   {
     author: "Jonh C CampBell",
     title: "Ghost Platoon",
     image: "https://m.media-amazon.com/images/I/41Wts36fLcL._AC_UL320_.jpg",
+    id: 2,
   },
-
   {
     author: "Brenda Davies",
     title: "The Girl Behind the Gates",
     image: "https://m.media-amazon.com/images/I/51nAXgu5H+L._SY445_SX342_.jpg",
+    id: 3,
   },
 ];
 
-const names = ["john", "peter", "susan"];
-const newNames = names.map((name) => {
-  return <h1>{name}</h1>;
-});
-
-console.log(newNames);
-
+// BookList component - renders a list of books
 const BookList = () => {
   return (
     <section className="booklist">
-      {names.map((name) => {
-        return <h1>{name}</h1>;
+      {/* Iterating through the books array using map() */}
+      {books.map((book) => {
+        console.log(book); // Logs each book object to the console for debugging
+
+        // Spreading book properties into the Book component and using id as a unique key
+        return <Book {...book} key={book.id} />;
       })}
     </section>
   );
 };
 
+// Book component - renders individual book details
 const Book = (props) => {
+  // Destructuring props for cleaner code
   const { image, title, author, children } = props;
 
   return (
@@ -47,10 +49,12 @@ const Book = (props) => {
       <img src={image} alt={title} />
       <h2>{title}</h2>
       <h4>{author}</h4>
+      {/* children prop allows additional content to be passed dynamically */}
       {children}
     </article>
   );
 };
 
+// Rendering the BookList component inside the root element
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<BookList />);
