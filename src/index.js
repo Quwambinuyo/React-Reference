@@ -27,12 +27,20 @@ const BookList = () => {
         author={firstBook.author}
         title={firstBook.title}
         image={firstBook.image}
-      />
+      >
+        {/* <p>
+          This is an amazing book about personal growth and self-improvement.
+        </p>
+
+        <button>Click Me</button> */}
+      </Book>
+
       <Book
         author={secondBook.author}
         title={secondBook.title}
         image={secondBook.image}
       />
+
       <Book
         author={thirdBook.author}
         title={thirdBook.title}
@@ -43,17 +51,17 @@ const BookList = () => {
 };
 
 const Book = (props) => {
-  const { image, title, author } = props;
+  const { image, title, author, children } = props;
+
   return (
     <article className="book">
       <img src={image} alt={title} />
-
       <h2>{title}</h2>
       <h4>{author}</h4>
+      {children}
     </article>
   );
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
 root.render(<BookList />);

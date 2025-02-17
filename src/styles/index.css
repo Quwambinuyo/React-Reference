@@ -32,7 +32,7 @@ em {
   }
 }
 .book {
-  background: #e1e1e1;
+  background: #9db5e9;
   border-radius: 1rem;
   padding: 2rem;
   text-align: center;
@@ -52,3 +52,22 @@ em {
   margin-top: 0.5rem;
   letter-spacing: 2px;
 }
+/* 
+.book p {
+  color: #000;
+  font-size: 1rem;
+  margin: 1rem 0 0.5rem;
+  letter-spacing: 2px;
+} */
+
+/* 
+.book button {
+  color: #000;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 1rem 0 0.5rem;
+  background: white;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid black;
+} */
